@@ -2,11 +2,11 @@
 import './index.css'
 
 const MatchCard = ({match}) => {
-  const match1={
-    competingTeam:match.competing_team,
-    competingTeamLogo:match.competing_team_logo,
-    result:match.result,
-    matchStatus:match.match_status
+  const match1 = {
+    competingTeam: match.competing_team,
+    competingTeamLogo: match.competing_team_logo,
+    result: match.result,
+    matchStatus: match.match_status,
   }
   const {competingTeam, competingTeamLogo, result, matchStatus} = match1
 

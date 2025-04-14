@@ -2,21 +2,19 @@
 import './index.css'
 
 const LatestMatch = ({latestMatch}) => {
- const toCamelCase = (str) => {
-  return str
-    .replace(/_./g, (match) => match.charAt(1).toUpperCase())
-    .replace(/^[A-Z]/, (match) => match.toLowerCase());
-};
+  const toCamelCase = str =>
+    str
+      .replace(/_./g, match => match.charAt(1).toUpperCase())
+      .replace(/^[A-Z]/, match => match.toLowerCase())
 
-// Function to convert each object key to camel case
-const convertObjectKeysToCamelCase = (obj) => {
-  return Object.keys(obj).reduce((acc, key) => {
-    const camelCaseKey = toCamelCase(key);
-    acc[camelCaseKey] = obj[key];
-    return acc;
-  }, {});
-};
-const camelCaseObj = convertObjectKeysToCamelCase(latestMatch);
+  // Function to convert each object key to camel case
+  const convertObjectKeysToCamelCase = obj =>
+    Object.keys(obj).reduce((acc, key) => {
+      const camelCaseKey = toCamelCase(key)
+      acc[camelCaseKey] = obj[key]
+      return acc
+    }, {})
+  const camelCaseObj = convertObjectKeysToCamelCase(latestMatch)
 
   const {
     competingTeam,

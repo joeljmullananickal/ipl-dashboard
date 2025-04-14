@@ -1,8 +1,10 @@
 // Write your code here
-import React, {Component} from 'react'
+import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {PieChart, Pie, Cell, Tooltip, Legend} from 'recharts'
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
+
 import './index.css'
 
 class TeamMatches extends Component {
@@ -27,6 +29,11 @@ class TeamMatches extends Component {
     this.setState({teamData: formattedData, isLoading: false})
   }
 
+  goBack = () => {
+    const {history} = this.props
+    history.replace('/')
+  }
+
   render() {
     const {teamData, isLoading} = this.state
     const {teamBannerUrl, latestMatchDetails, recentMatches} = teamData
@@ -47,11 +54,31 @@ class TeamMatches extends Component {
     const backgroundStyle = {
       background: teamColors[id],
     }
+    const COLORS = {
+      Won: '#00C49F',
+      Lost: '#FF4D4F',
+      Draw: '#FFBB28',
+    }
+
+    const gamestats = {Won: 0, Lost: 0, Draw: 0}
+    if (recentMatches) {
+      recentMatches.forEach(match1 => {
+        const status = match1.match_status
+        if (gamestats[status] !== undefined) {
+          gamestats[status] += 1
+        }
+      })
+    }
+    const pieChartData = Object.entries(gamestats).map(([name, value]) => ({
+      name,
+      value,
+      color: COLORS[name],
+    }))
 
     return (
       <div className="team-matches-container" style={backgroundStyle}>
         {isLoading ? (
-          <div testid="loader">
+          <div data-testid="loader">
             <Loader type="Oval" color="#ffffff" height={50} width={50} />
           </div>
         ) : (
@@ -63,10 +90,36 @@ class TeamMatches extends Component {
             />
             <LatestMatch latestMatch={latestMatchDetails} />
             <ul className="recent-matches-list">
-              {recentMatches.map(match => (
-                <MatchCard key={match.id} match={match} />
+              {recentMatches.map(match1 => (
+                <MatchCard key={match1.id} match={match1} />
               ))}
             </ul>
+            <div className="A">
+              <h2>Game Statistics</h2>
+              <PieChart width={400} height={400}>
+                <Pie
+                  data={pieChartData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({name, percent}) =>
+                    `${name} ${(percent * 100).toFixed(0)}%`
+                  }
+                  outerRadius={130}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {pieChartData.map(entry => (
+                    <Cell key={entry.name} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend verticalAlign="bottom" />
+              </PieChart>
+            </div>
+            <button onClick={this.goBack} type="button" className="butt">
+              Back
+            </button>
           </>
         )}
       </div>
