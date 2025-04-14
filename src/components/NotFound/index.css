@@ -1,0 +1,27 @@
+/* Write your CSS here */
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.not-found-image {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.not-found-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.not-found-description {
+  font-size: 16px;
+  color: #d1d5db;
+}

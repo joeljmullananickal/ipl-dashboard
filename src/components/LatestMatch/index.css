@@ -1,0 +1,52 @@
+/* Write your CSS here */
+.latest-match-container {
+  background-color: #1e293b;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.section-heading {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.latest-match-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.competing-team-section {
+  color: #ffffff;
+}
+
+.competing-team {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.match-date,
+.match-venue,
+.match-result {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.competing-team-logo {
+  width: 120px;
+  height: 120px;
+}
+
+.additional-details {
+  color: #ffffff;
+}
+
+.match-detail {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.detail-label {
+  font-weight: bold;
+}

@@ -1,0 +1,41 @@
+/* Write your CSS here */
+.match-card {
+  background-color: #334155;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  color: #ffffff;
+  width: 200px;
+}
+
+.competing-team-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.competing-team {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.match-result {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.match-status {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.match-won {
+  color: #28a745;
+}
+
+.match-lost {
+  color: #dc3545;
+}
